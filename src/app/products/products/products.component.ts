@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models';
 import { ProductsService } from 'src/app/services';
+import { AppError } from 'src/app/core';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import { ProductsService } from 'src/app/services';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-  error: any;
+  error: AppError;
 
   constructor(private service: ProductsService) {}
 
@@ -19,7 +20,7 @@ export class ProductsComponent implements OnInit {
         console.log('Success! Get Products Successful! (via Observable)');
         this.products = products;
       },
-      (error: any) => {
+      (error: AppError) => {
         this.error = error;
         console.log(
           'Failed! Error occurred when getting products. (via Observable)',
@@ -36,7 +37,7 @@ export class ProductsComponent implements OnInit {
         console.log('Success! Get Products Successful! (via Promise)');
         this.products = products;
       })
-      .catch((error: any) => {
+      .catch((error: AppError) => {
         this.error = error;
         console.log(
           'Failed! Error occurred when getting products. (via Promise)',
@@ -54,7 +55,7 @@ export class ProductsComponent implements OnInit {
             product => product.id !== productId
           );
         },
-        (error: any) => {
+        (error: AppError) => {
           this.error = error;
           console.log('Failed! Error occurred when deleting product.', error);
         }
