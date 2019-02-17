@@ -7,5 +7,9 @@ describe('test fundamental',()=>{
     it('should return +1 for positive number',()=>{
         const result = compute(1);
         expect(result).toBe(2);
+    });    
+    it('should return 5 for positive number',()=>{
+        const result = compute(4);
+        expect(result).toBe(5);
     });
 })
