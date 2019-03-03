@@ -1,0 +1,7 @@
+sonar-scanner -Dsonar.login=6a6295864473df05d6caaddc9249b98092237deb
+
+
+#create token using sonarqube and use it instead of login
+#sonar.login=6a6295864473df05d6caaddc9249b98092237deb
+#sonar username -> kpranav
+
