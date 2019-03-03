@@ -21,11 +21,7 @@ export class ProductsComponent implements OnInit {
         this.products = products;
       },
       (error: AppError) => {
-        this.error = error;
-        console.log(
-          'Failed! Error occurred when getting products. (via Observable)',
-          error
-        );
+        this.handleError('Failed! Error occurred when getting products. (via Observable)', error);
       }
     );
   }
@@ -38,11 +34,7 @@ export class ProductsComponent implements OnInit {
         this.products = products;
       })
       .catch((error: AppError) => {
-        this.error = error;
-        console.log(
-          'Failed! Error occurred when getting products. (via Promise)',
-          error
-        );
+        this.handleError('Failed! Error occurred when getting products. (via Promise)', error);
       });
   }
 
@@ -56,10 +48,14 @@ export class ProductsComponent implements OnInit {
           );
         },
         (error: AppError) => {
-          this.error = error;
-          console.log('Failed! Error occurred when deleting product.', error);
+          this.handleError('Failed! Error occurred when deleting product.', error);
         }
       );
     }
+  }
+
+  handleError(message: string, error: AppError) {
+    this.error = error;
+    console.log(message, error);
   }
 }
