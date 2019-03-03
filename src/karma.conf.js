@@ -27,6 +27,20 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers:{
+      HeadlessChrome:{
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          // Without a remote debugging port, Google Chrome exits immediately.
+          '--remote-debugging-port=9222',
+          '--proxy-bypass-list=*',
+          // '--proxy-server=\'http://<my org proxy server>:8080\''
+       ]
+      }
+    },
     singleRun: false
   });
 };

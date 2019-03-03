@@ -45,3 +45,6 @@ Thumbs.db
 
 #winmerge
 *.bak
+
+#scanner work
+/.scannerwork

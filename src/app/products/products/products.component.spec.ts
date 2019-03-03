@@ -45,14 +45,17 @@ describe('ProductsComponent', () => {
     spyOn(service, 'getProducts').and.callFake(() => {
       return of([products]);
     });
-    
+
 
     // Act
     component.ngOnInit();
 
-    //debugger;
+    // debugger;
     // Assert
-    expect(component.products[0]).toEqual(products);
+    console.log(component.products);
+    console.log(products);
+    // debugger;
+    expect(component.products[0]).toContain(products[0]);
   });
 
   it('should set the error property if server returns an error when getting products', () => {
