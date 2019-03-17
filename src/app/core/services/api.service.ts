@@ -12,23 +12,24 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private headers = new Headers({
+  /* private headers = new Headers({
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  });
+    Accept: 'application/json'
+  }); */
   private options = {
     headers: null,
     params: null
   };
+
+
+  /* if (this.jwtService.getToken()) {
+    headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+  } */
   private setHeaders(): HttpHeaders {
     const headersConfig = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      Accept: 'application/json'
     };
-
-    /* if (this.jwtService.getToken()) {
-      headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
-    } */
     return new HttpHeaders(headersConfig);
   }
 
@@ -39,12 +40,12 @@ export class ApiService {
   }
 
   private formatErrors(error: any) {
-    return  throwError(error.error);
+    return throwError(error.error);
   }
 
   get(path: string, params?: HttpParams): Observable<any> {
     return this.http.get(`${environment.apiUrl}${path}`, this.setRequestOptions(params))
-    .pipe(catchError(this.formatErrors));
+      .pipe(catchError(this.formatErrors));
   }
 
   put(path: string, body: Object = {}): Observable<any> {

@@ -26,8 +26,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS'],
-    //browsers: ['Chrome'],
+    browsers: ['Chrome'],
+    //browsers: ['PhantomJS'],
     customLaunchers:{
       HeadlessChrome:{
         base: 'Chrome',
