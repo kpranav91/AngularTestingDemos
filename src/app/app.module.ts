@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,9 @@ import { CoreModule } from './core/core.module';
 import { ApiService } from './core/services/api.service';
 import { HomeComponent } from './home/home.component';
 import { ProductsService } from './services';
+import { GlobalErrorHandlerService } from './core/services';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ServerErrorInterceptorService } from './core/interceptors';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { ProductsService } from './services';
     CoreModule
   ],
   providers: [
-    ApiService, ProductsService
+    ApiService, ProductsService,
+    {
+      provide: ErrorHandler, useClass: GlobalErrorHandlerService
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

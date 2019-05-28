@@ -19,10 +19,10 @@ export class ProductsComponent implements OnInit {
       (products: any[]) => {
         console.log('Success! Get Products Successful! (via Observable)');
         this.products = products;
-      },
+      }/* ,
       (error: AppError) => {
         this.handleError('Failed! Error occurred when getting products. (via Observable)', error);
-      }
+      } */
     );
   }
 
@@ -32,10 +32,10 @@ export class ProductsComponent implements OnInit {
       .then((products: Product[]) => {
         console.log('Success! Get Products Successful! (via Promise)');
         this.products = products;
-      })
-      .catch((error: AppError) => {
-        this.handleError('Failed! Error occurred when getting products. (via Promise)', error);
       });
+      /* .catch((error: AppError) => {
+        this.handleError('Failed! Error occurred when getting products. (via Promise)', error);
+      }); */
   }
 
   onDelete(productId) {
@@ -46,10 +46,10 @@ export class ProductsComponent implements OnInit {
           this.products = this.products.filter(
             product => product.id !== productId
           );
-        },
+        }/* ,
         (error: AppError) => {
           this.handleError('Failed! Error occurred when deleting product.', error);
-        }
+        } */
       );
     }
   }

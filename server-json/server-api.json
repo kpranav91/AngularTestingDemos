@@ -20,6 +20,13 @@
       "description": "Hindi Movie",
       "isAvailable": false,
       "price": 299
+    },
+    {
+      "name": "Test 123",
+      "description": "asdf",
+      "price": 123,
+      "isAvailable": true,
+      "id": 4
     }
   ],
   "customers": [

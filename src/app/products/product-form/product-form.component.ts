@@ -56,23 +56,23 @@ export class ProductFormComponent implements OnInit {
         (product: Product) => {
           console.log('Success! Add product successful.', product);
           this.router.navigate(['/products']);
-        },
+        }/* ,
         (error: any) => {
           console.log('Failed! Error occurred while adding a product.', error);
-        }
+        } */
       );
     } else {
       this.service.updateProduct(this.id, this.product).subscribe(
         (product: Product) => {
           console.log('Success! Update product successful.', product);
           this.router.navigate(['/products']);
-        },
+        }/* ,
         (error: any) => {
           console.log(
             'Failed! Error occurred while updating a product.',
             error
           );
-        }
+        } */
       );
     }
   }
